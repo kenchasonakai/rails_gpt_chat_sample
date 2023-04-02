@@ -1,0 +1,7 @@
+<div class="m-32">
+  <%= form_with model: @chat, data: { turbo: false } do |f| %>
+    <%= f.label :question, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= f.text_area :question, rows: "4", class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    <%= f.submit nil, class: "block px-4 py-2 mt-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  <% end %>
+</div>
