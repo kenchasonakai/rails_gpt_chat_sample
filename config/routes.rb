@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'chat#show'
+  root to: 'chats#new'
   resources :chats
 end
