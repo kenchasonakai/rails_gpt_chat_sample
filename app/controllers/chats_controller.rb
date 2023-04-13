@@ -13,18 +13,11 @@ class ChatsController < ApplicationController
 
   def create
     fetch_github_repo_blobs_url(params[:chat][:question])
-    # @chat = Chat.new(chat_params)
-    # if @chat.save
-    #   redirect_to chats_path
-    # else
-    #   render :new
-    # end
   end
 
   private
 
   def chat_params
-    # params.require(:chat).permit(:question).merge(answer: fetch_gpt_response(params[:chat][:question]))
     params.require(:chat).permit(:question).merge(answer: fetch_github_repo_blobs_url(params[:chat][:question]))
   end
 
@@ -54,7 +47,7 @@ class ChatsController < ApplicationController
         github_code = Net::HTTP.get_response(URI.parse(url)).body
         next if github_code.blank?
 
-        base_prompt = "あなたはプロのWebエンジニアです。次のRuby on Railsのコードを読みコードレビューを行ってください。指摘事項がない場合はLGTMとだけ返信してください。\n\n"
+        base_prompt = "あなたはプロのWebエンジニアです。次のRuby on Railsのコードを読み厳しくコードレビューを行ってください。指摘事項がない場合はLGTMとだけ返信してください。\n\n"
         p path + '/' + url.split('/').last
         p fetch_gpt_response(base_prompt + "```\n" +  github_code.force_encoding(Encoding::UTF_8) + "\n```")
       end
